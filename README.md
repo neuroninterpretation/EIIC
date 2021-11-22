@@ -22,13 +22,6 @@ python Model_Prediction_Explanation/false_prediction.py
 python Model_Prediction_Explanation/true_prediction.py
 ```
 
-##### Complete Results
-
-We also report the completed results in the following folder:
-
-- Results for false prediction: Model_Prediction_Explanation/complete_results/false_prediction
-- Results for true prediction: Model_Prediction_Explanation/complete_results/true_prediction
-
 
 
 
@@ -37,7 +30,7 @@ We also report the completed results in the following folder:
 
 ##### Using Concept Filtering
 
-The complete results is at: Compositional_Explanation/using_concept_filtering/results-TransE-Dismult-TransD-ProjE_CLIP.csv. 
+The complete results can be cloned from https://drive.google.com/file/d/15xbXfjeVT-eFMtIxN9rYI-KmG3a4qy3q/. 
 
 
 
@@ -62,12 +55,6 @@ python Model_Manipulation/model_manipulation/run_disable_pos_neurons.py
 python Model_Manipulation/model_manipulation/run_disable_nega_neurons.py
 ```
 
-##### Complete Results
-
-We also report the completed results in the following folder:
-
-- Results for disabling negative neurons: Model_Manipulation/complete_results/disable_negative_neuron_on_false_prediction.csv
-- Results for disabling positive neurons:    Model_Manipulation/complete_results/disable_positive_neuron_on_true_prediction.csv
 
 
 
@@ -87,7 +74,5 @@ We also report the completed results in the following folder:
 - `seaborn==0.9.0`
 - `scikit-image==0.16.2`
 - `pyparsing==2.4.6`
-- `pyeda==0.28.0`
-- `nltk==3.3`
-- `spacy==2.2.4` 
+- `pyeda==0.28.0` 
 - `pycocotools==2.0`
