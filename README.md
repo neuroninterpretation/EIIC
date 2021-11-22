@@ -30,7 +30,7 @@ python Model_Prediction_Explanation/true_prediction.py
 
 #### Using Concept Filtering
 
-The complete results can be cloned from https://drive.google.com/file/d/15xbXfjeVT-eFMtIxN9rYI-KmG3a4qy3q/. 
+The complete results is at: Compositional_Explanation/using_concept_filtering/results-TransE-Dismult-TransD-ProjE_CLIP.csv. 
 
 
 
