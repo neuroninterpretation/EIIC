@@ -4,7 +4,7 @@ This repository contains the code for the paper "Explaining  Image Classificatio
 
 #### Data 
 
-All experimental results are conducted on the cenes datasets ADE20k with atomic concepts defined by annotations.
+All experimental results are conducted on the scenes datasets ADE20k with atomic concepts defined by annotations.
 
 
 ### Experiments for Model Prediction Explanation
