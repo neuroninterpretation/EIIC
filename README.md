@@ -2,13 +2,13 @@
 
 This repository contains the code for the paper "Explaining  Image Classification through Knowledge-aware Neuron Interpretation".
 
+#### Data 
+
+All experimental results are conducted on the cenes datasets ADE20k with atomic concepts defined by annotations.
 
 
 ### Experiments for Model Prediction Explanation
 
-#### Data Preparation
-
-The per data results (per_data_results.json) which  running each data individually can be cloned from https://drive.google.com/file/d/1jQavR3Rza6Hjw1EQ163imV15Tm5g8zv6/view?usp=sharing, and unzip it to the folder: Model_Prediction_Explanation/data
 
 #### False Prediction
 
@@ -40,7 +40,6 @@ The complete results is at: Compositional_Explanation/using_concept_filtering/re
 
 #### Data and Code Preparation
 
-- The dataset (dataset.zip) can be cloned from https://drive.google.com/file/d/1rmGSvUnsyxXu6jfqB9w85XYvd8VTt_Lj/view?usp=sharing, and unzip it to the folder: Model_Manipulation/model_manipulation
 - Replace "/site-packages/torchvision/models/resnet.py" in your environment with "Model_Manipulation/replace_code/resnet.py"
 
 #### Disabling Positive Neurons
