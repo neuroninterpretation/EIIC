@@ -1,6 +1,6 @@
 ## Neuron Interpretation
 
-This repository contains the code for Neuron Interpretation".
+This repository contains the code for Neuron Interpretation.
 
 #### Data 
 
