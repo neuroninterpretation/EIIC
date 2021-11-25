@@ -1,6 +1,6 @@
-## Explaining  Image Classification through Knowledge-aware Neuron Interpretation
+## EIIC
 
-This repository contains the code for the paper "Explaining  Image Classification through Knowledge-aware Neuron Interpretation".
+This repository contains the code for Neuron Interpretation".
 
 #### Data 
 
