@@ -73,21 +73,23 @@ def probe(def_idx, top_k, pred_type, act_neuron, tf_idx):
 
 def run_overall():
     # config
-    # def_key = ['def_1','def_2','def_3','def_4','def_5']
-    def_key = ['def_5']
-    write_path = 'neuron_effect_to_model_performance/negative_neuron_on_false_prediction_def_5.json'
+    # def_key = ['def_3','def_4']
+    def_key = ['def_3']
+    write_path = 'neuron_effect_to_model_performance/negative_neuron_on_false_prediction_results.json'
     
     
     # top 20
     top_k = [i for i in range(1,1+20)]    
-    results = {'def_1':{},'def_2':{},'def_3':{},'def_4':{},'def_5':{}}
+    results = {'SCC':{},'ICC':{}}
     for def_idx in def_key:
         for top_i in top_k:
             accuracy = probe(def_idx, top_i, 'false_prediction', false_neuron, true_false_index)
             if top_i not in results[def_idx]:
                 results[def_idx][top_i] = {'accuracy':0}
-            results[def_idx][top_i]['accuracy'] = accuracy
-    
+            if def_idx == 'def_3':
+                results['SCC'][top_i]['accuracy'] = accuracy
+            if def_idx == 'def_4':
+                results['ICC'][top_i]['accuracy'] = accuracy    
     
     with open(write_path, 'w', encoding='utf-8') as _w:
         json.dump(results, _w)
