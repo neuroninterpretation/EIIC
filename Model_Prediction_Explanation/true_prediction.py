@@ -29,8 +29,8 @@ def statistic_true_prediction(neuron_type, data_path, definition_path, pred_path
     with open(definition_path, 'r', encoding='utf-8') as _f:
         five_definitions = json.load(_f)
     
-    true_explanation_count = {'CM_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'SM_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0}, 'CM_F_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'SM_F_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0}}  
-    true_explanation_count_ratio = {'CM_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'SM_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0}, 'CM_F_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'SM_F_TP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0}}      
+    true_explanation_count = {'CM_TP':{'SCC':0,'ICC':0},'SM_TP':{'SCC':0,'ICC':0}, 'CM_F_TP':{'SCC':0,'ICC':0},'SM_F_TP':{'SCC':0,'ICC':0}}  
+    true_explanation_count_ratio = {'CM_TP':{'SCC':0,'ICC':0},'SM_TP':{'SCC':0,'ICC':0}, 'CM_F_TP':{'SCC':0,'ICC':0},'SM_F_TP':{'SCC':0,'ICC':0}}
     false_count = 0
     true_count = 0
     for idx, val in tqdm(enumerate(pred)):
@@ -52,63 +52,31 @@ def statistic_true_prediction(neuron_type, data_path, definition_path, pred_path
                 if target[idx] != pred[idx]:
                     false_count += 1
 
-                    target_def_1 = five_definitions[target[idx]]['definition_1']
-                    target_def_2 = five_definitions[target[idx]]['definition_2']
                     target_def_3 = five_definitions[target[idx]]['definition_3']
-                    target_def_4 = five_definitions[target[idx]]['definition_4']
-                    target_def_5 = five_definitions[target[idx]]['definition_5']                                           
+                    target_def_4 = five_definitions[target[idx]]['definition_4']                                          
 
-                    # true prediction
-                    ratio_inter_tar_1, jaccard_tar_1 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_1)
-                    true_explanation_count['CM_F_TP']['def_1'] += ratio_inter_tar_1
-                    true_explanation_count['SM_F_TP']['def_1'] += jaccard_tar_1
-                                    
-                    ratio_inter_tar_2, jaccard_tar_2 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_2)
-                    true_explanation_count['CM_F_TP']['def_2'] += ratio_inter_tar_2
-                    true_explanation_count['SM_F_TP']['def_2'] += jaccard_tar_2
-
-                    
+                    # true prediction                    
                     ratio_inter_tar_3, jaccard_tar_3 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_3)
-                    true_explanation_count['CM_F_TP']['def_3'] += ratio_inter_tar_3
-                    true_explanation_count['SM_F_TP']['def_3'] += jaccard_tar_3
+                    true_explanation_count['CM_F_TP']['SCC'] += ratio_inter_tar_3
+                    true_explanation_count['SM_F_TP']['SCC'] += jaccard_tar_3
 
                     ratio_inter_tar_4, jaccard_tar_4 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_4)
-                    true_explanation_count['CM_F_TP']['def_4'] += ratio_inter_tar_4
-                    true_explanation_count['SM_F_TP']['def_4'] += jaccard_tar_4
-
-                    ratio_inter_tar_5, jaccard_tar_5 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_5)
-                    true_explanation_count['CM_F_TP']['def_5'] += ratio_inter_tar_5
-                    true_explanation_count['SM_F_TP']['def_5'] += jaccard_tar_5    
+                    true_explanation_count['CM_F_TP']['ICC'] += ratio_inter_tar_4
+                    true_explanation_count['SM_F_TP']['ICC'] += jaccard_tar_4  
 
                 else:
                     true_count += 1
 
-                    target_def_1 = five_definitions[target[idx]]['definition_1']
-                    target_def_2 = five_definitions[target[idx]]['definition_2']
                     target_def_3 = five_definitions[target[idx]]['definition_3']
                     target_def_4 = five_definitions[target[idx]]['definition_4']
-                    target_def_5 = five_definitions[target[idx]]['definition_5'] 
-
-                    ratio_inter_tar_1, jaccard_tar_1 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_1)
-                    true_explanation_count['CM_TP']['def_1'] += ratio_inter_tar_1
-                    true_explanation_count['SM_TP']['def_1'] += jaccard_tar_1
-                                    
-                    ratio_inter_tar_2, jaccard_tar_2 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_2)
-                    true_explanation_count['CM_TP']['def_2'] += ratio_inter_tar_2
-                    true_explanation_count['SM_TP']['def_2'] += jaccard_tar_2
-
                     
                     ratio_inter_tar_3, jaccard_tar_3 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_3)
-                    true_explanation_count['CM_TP']['def_3'] += ratio_inter_tar_3
-                    true_explanation_count['SM_TP']['def_3'] += jaccard_tar_3
+                    true_explanation_count['CM_TP']['SCC'] += ratio_inter_tar_3
+                    true_explanation_count['SM_TP']['SCC'] += jaccard_tar_3
 
                     ratio_inter_tar_4, jaccard_tar_4 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_4)
-                    true_explanation_count['CM_TP']['def_4'] += ratio_inter_tar_4
-                    true_explanation_count['SM_TP']['def_4'] += jaccard_tar_4
-
-                    ratio_inter_tar_5, jaccard_tar_5 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_5)
-                    true_explanation_count['CM_TP']['def_5'] += ratio_inter_tar_5
-                    true_explanation_count['SM_TP']['def_5'] += jaccard_tar_5
+                    true_explanation_count['CM_TP']['ICC'] += ratio_inter_tar_4
+                    true_explanation_count['SM_TP']['ICC'] += jaccard_tar_4
 
  
     for key_1 in true_explanation_count.keys():
