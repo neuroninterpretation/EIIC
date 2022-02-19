@@ -29,8 +29,8 @@ def statistic_false_prediction(neuron_type, data_path, definition_path, pred_pat
         five_definitions = json.load(_f)
     
 
-    explanation_count = {'CM_FP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'DM_FP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'SM_FP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0}} 
-    explanation_count_ratio = {'CM_FP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'DM_FP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0},'SM_FP':{'def_1':0,'def_2':0,'def_3':0,'def_4':0,'def_5':0}}  
+    explanation_count = {'CM_FP':{'SCC':0,'ICC':0},'DM_FP':{'SCC':0,'ICC':0},'SM_FP':{'SCC':0,'ICC':0}} 
+    explanation_count_ratio = {'CM_FP':{'SCC':0,'ICC':0},'DM_FP':{'SCC':0,'ICC':0},'SM_FP':{'SCC':0,'ICC':0}} 
     false_count = 0
     true_count = 0
     for idx, val in tqdm(enumerate(pred)):
@@ -52,61 +52,32 @@ def statistic_false_prediction(neuron_type, data_path, definition_path, pred_pat
                 if target[idx] != pred[idx]:
                     false_count += 1
 
-                    target_def_1 = five_definitions[target[idx]]['definition_1']
-                    target_def_2 = five_definitions[target[idx]]['definition_2']
                     target_def_3 = five_definitions[target[idx]]['definition_3']
                     target_def_4 = five_definitions[target[idx]]['definition_4']
-                    target_def_5 = five_definitions[target[idx]]['definition_5']                
+              
                             
-                    pred_def_1 = five_definitions[pred[idx]]['definition_1']
-                    pred_def_2 = five_definitions[pred[idx]]['definition_2']
                     pred_def_3 = five_definitions[pred[idx]]['definition_3']
-                    pred_def_4 = five_definitions[pred[idx]]['definition_4']
-                    pred_def_5 = five_definitions[pred[idx]]['definition_5']         
+                    pred_def_4 = five_definitions[pred[idx]]['definition_4']        
                     
                         
-                    flag_inter_def_1, flag_diff_def_1, flag_jaccard_def_1 = per_def_statistic_on_four_metrics(neu_concepts, pred_def_1, target_def_1)
-                    if flag_inter_def_1 == 1:
-                        explanation_count['CM_FP']['def_1'] += 1
-                    if flag_diff_def_1 == 1:
-                        explanation_count['DM_FP']['def_1'] += 1                  
-                    if flag_jaccard_def_1 == 1:
-                        explanation_count['SM_FP']['def_1'] += 1
-                    
-                    
-                    flag_inter_def_2, flag_diff_def_2, flag_jaccard_def_2 = per_def_statistic_on_four_metrics(neu_concepts, pred_def_2, target_def_2)
-                    if flag_inter_def_2 == 1:
-                        explanation_count['CM_FP']['def_2'] += 1
-                    if flag_diff_def_2 == 1:
-                        explanation_count['DM_FP']['def_2'] += 1                 
-                    if flag_jaccard_def_2 == 1:
-                        explanation_count['SM_FP']['def_2'] += 1
 
 
                     
                     flag_inter_def_3, flag_diff_def_3, flag_jaccard_def_3 = per_def_statistic_on_four_metrics(neu_concepts, pred_def_3, target_def_3)
                     if flag_inter_def_3 == 1:
-                        explanation_count['CM_FP']['def_3'] += 1
+                        explanation_count['CM_FP']['SCC'] += 1
                     if flag_diff_def_3 == 1:
-                        explanation_count['DM_FP']['def_3'] += 1                   
+                        explanation_count['DM_FP']['SCC'] += 1                   
                     if flag_jaccard_def_3 == 1:
-                        explanation_count['SM_FP']['def_3'] += 1
+                        explanation_count['SM_FP']['SCC'] += 1
 
                     flag_inter_def_4, flag_diff_def_4, flag_jaccard_def_4 = per_def_statistic_on_four_metrics(neu_concepts, pred_def_4, target_def_4)
                     if flag_inter_def_4 == 1:
-                        explanation_count['CM_FP']['def_4'] += 1
+                        explanation_count['CM_FP']['ICC'] += 1
                     if flag_diff_def_4 == 1:
-                        explanation_count['DM_FP']['def_4'] += 1                 
+                        explanation_count['DM_FP']['ICC'] += 1                 
                     if flag_jaccard_def_4 == 1:
-                        explanation_count['SM_FP']['def_4'] += 1
-
-                    flag_inter_def_5, flag_diff_def_5, flag_jaccard_def_5 = per_def_statistic_on_four_metrics(neu_concepts, pred_def_5, target_def_5)
-                    if flag_inter_def_5 == 1:
-                        explanation_count['CM_FP']['def_5'] += 1
-                    if flag_diff_def_5 == 1:
-                        explanation_count['DM_FP']['def_5'] += 1                   
-                    if flag_jaccard_def_5 == 1:
-                        explanation_count['SM_FP']['def_5'] += 1                                             
+                        explanation_count['SM_FP']['ICC'] += 1                                         
 
                 else:
                     true_count += 1
