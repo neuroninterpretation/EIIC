@@ -27,7 +27,7 @@ def statistic_true_prediction(neuron_type, data_path, definition_path, pred_path
             data.append(json.loads(line))
     
     with open(definition_path, 'r', encoding='utf-8') as _f:
-        five_definitions = json.load(_f)
+        cc_definitions = json.load(_f)
     
     true_explanation_count = {'CM_TP':{'SCC':0,'ICC':0},'SM_TP':{'SCC':0,'ICC':0}, 'CM_F_TP':{'SCC':0,'ICC':0},'SM_F_TP':{'SCC':0,'ICC':0}}  
     true_explanation_count_ratio = {'CM_TP':{'SCC':0,'ICC':0},'SM_TP':{'SCC':0,'ICC':0}, 'CM_F_TP':{'SCC':0,'ICC':0},'SM_F_TP':{'SCC':0,'ICC':0}}
@@ -35,8 +35,8 @@ def statistic_true_prediction(neuron_type, data_path, definition_path, pred_path
     true_count = 0
     for idx, val in tqdm(enumerate(pred)):
 
-        if target[idx] != 'unk' and target[idx] in five_definitions and pred[idx] != 'unk' and pred[idx] in five_definitions:           
-            assert target[idx] in five_definitions and target[idx] in five_definitions        
+        if target[idx] != 'unk' and target[idx] in cc_definitions and pred[idx] != 'unk' and pred[idx] in cc_definitions:           
+            assert target[idx] in cc_definitions and target[idx] in cc_definitions        
             
             concept_iou, concept_threshold, concept_layer = extract_three_type_neuron_concept(idx, target[idx], data)
 
@@ -52,8 +52,8 @@ def statistic_true_prediction(neuron_type, data_path, definition_path, pred_path
                 if target[idx] != pred[idx]:
                     false_count += 1
 
-                    target_def_3 = five_definitions[target[idx]]['definition_3']
-                    target_def_4 = five_definitions[target[idx]]['definition_4']                                          
+                    target_def_3 = cc_definitions[target[idx]]['SCC']
+                    target_def_4 = cc_definitions[target[idx]]['ICC']                                          
 
                     # true prediction                    
                     ratio_inter_tar_3, jaccard_tar_3 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_3)
@@ -67,8 +67,8 @@ def statistic_true_prediction(neuron_type, data_path, definition_path, pred_path
                 else:
                     true_count += 1
 
-                    target_def_3 = five_definitions[target[idx]]['definition_3']
-                    target_def_4 = five_definitions[target[idx]]['definition_4']
+                    target_def_3 = cc_definitions[target[idx]]['SCC']
+                    target_def_4 = cc_definitions[target[idx]]['ICC']
                     
                     ratio_inter_tar_3, jaccard_tar_3 = per_def_statistic_on_six_metrics_true_prediction(neu_concepts, target_def_3)
                     true_explanation_count['CM_TP']['SCC'] += ratio_inter_tar_3
@@ -205,7 +205,7 @@ if __name__=='__main__':
     # neuron concepts type: whole_layer, highest_iou, threshold
     neuron_type = 'whole_layer'
     data_path = 'data/per_data_results.json'
-    definition_path = 'data/five_definitions.json'
+    definition_path = 'data/cc_definitions.json'
     pred_path = 'data/pred_idx.csv' 
     write_path = 'results/results.json'   
     statistic_true_prediction(neuron_type, data_path, definition_path, pred_path, write_path)
