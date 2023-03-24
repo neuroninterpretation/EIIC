@@ -62,8 +62,6 @@ python Model_Manipulation/model_manipulation/run_disable_nega_neurons.py
 ### Dependencies
 
 - `pyeda`
-- `torch==1.4.0`
-- `torchvision==0.4.2`
 - `pandas==0.25.3`
 - `tqdm==4.30.0`
 - `imageio==2.6.1`
