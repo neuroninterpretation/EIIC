@@ -1,6 +1,6 @@
 pyeda
-torch==1.4.0
-torchvision==0.4.2
+torch
+torchvision
 pandas
 tqdm
 imageio
