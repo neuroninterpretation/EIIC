@@ -10,7 +10,6 @@ import re
 from Cython.Compiler.PyrexTypes import specialize_entry
 from _pytest.monkeypatch import K
 from numpy import pi
-import pandas as pd
 from pycparser.ply.yacc import restart
 from pylab import *
 from tqdm import tqdm
