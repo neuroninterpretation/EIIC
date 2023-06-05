@@ -12,7 +12,6 @@ from util.clean import clean
 from util.misc import safe_layername
 from tqdm import tqdm
 import pickle
-import os
 import pandas as pd
 from loader.data_loader import ade20k
 import numpy as np
