@@ -3,7 +3,7 @@
 @Desc    :   1) This is the code for false prediction.
              2) The string 'unk' in data/pred_idx.csv means the data with that index in ADE20k has no scene. So we remove these data in our experiments.
 '''
-import os
+import os 
 import json
 import re
 from Cython.Compiler.PyrexTypes import specialize_entry
