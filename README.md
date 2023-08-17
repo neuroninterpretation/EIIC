@@ -1,6 +1,6 @@
-## Neuron Interpretation
+## Knowledge-aware Neuron Interpretation for Scene Classification
 
-This repository contains the code for Neuron Interpretation.
+This repository contains the data and code for the paper "Knowledge-aware Neuron Interpretation for Scene Classification".
 
 #### Data 
 
