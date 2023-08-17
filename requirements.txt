@@ -9,7 +9,7 @@ Pillow
 seaborn
 scikit-image
 pyparsing
-pyeda
+pyeda 
 nltk
 spacy
 pycocotools
