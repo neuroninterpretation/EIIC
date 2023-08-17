@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@Desc    :   1) This is the code for true prediction.
+@Desc    :   1) This is the code for true prediction. 
              2) The string 'unk' in data/pred_idx.csv means the data with that index in ADE20k has no scene. So we remove these data in our experiments.
 
 '''
