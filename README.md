@@ -13,7 +13,7 @@ All experimental results are conducted on the scenes datasets ADE20k with atomic
 #### False Prediction
 
 ```
-python Model_Prediction_Explanation/false_prediction.py
+python Model_Prediction_Explanation/false_prediction.py 
 ```
 
 #### True Prediction
